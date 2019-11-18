@@ -45,4 +45,20 @@ public class IoSession {
             channel.writeAndFlush(new TextWebSocketFrame(packet.toJSONString()));
         }
     }
+
+    public Channel getChannel() {
+        return channel;
+    }
+
+    public void setChannel(Channel channel) {
+        this.channel = channel;
+    }
+
+    public String getIpAddr() {
+        return ipAddr;
+    }
+
+    public void setIpAddr(String ipAddr) {
+        this.ipAddr = ipAddr;
+    }
 }

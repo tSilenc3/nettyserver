@@ -1,21 +1,22 @@
-package com.adward.netty.netty.logic;
+package com.adward.netty.netty.logic.user.res;
 
-import com.adward.netty.entity.User;
-import com.alibaba.fastjson.JSONObject;
 import com.adward.netty.netty.message.AbstractPacket;
 import com.adward.netty.netty.message.PacketType;
 import com.adward.netty.netty.net.IoSession;
 
-public class ReqHeart extends AbstractPacket {
+public class ResUserRegister extends AbstractPacket {
+
+    private int resultCode;
+
 
     @Override
     public PacketType getPacketType() {
-        return PacketType.heart;
+        return null;
     }
-
 
     @Override
     public void execPacket(IoSession ioSession) {
-        ioSession.sendPacket(new User("aa", "123456"));
+
     }
+
 }

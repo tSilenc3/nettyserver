@@ -1,4 +1,4 @@
-package com.adward.netty.netty.logic.user;
+package com.adward.netty.netty.logic.user.req;
 
 import com.adward.netty.netty.message.AbstractPacket;
 import com.adward.netty.netty.message.PacketType;
@@ -14,15 +14,5 @@ public class ReqLogin extends AbstractPacket {
     @Override
     public void execPacket(IoSession ioSession) {
 
-    }
-
-    @Override
-    public Object getData() {
-        return super.getData();
-    }
-
-    @Override
-    public void setData(Object data) {
-        super.setData(data);
     }
 }

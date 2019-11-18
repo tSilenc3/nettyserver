@@ -1,7 +1,8 @@
 package com.adward.netty.netty.message;
 
 import com.adward.netty.netty.logic.ReqHeart;
-import com.adward.netty.netty.logic.user.ReqLogin;
+import com.adward.netty.netty.logic.user.req.ReqLogin;
+import com.adward.netty.netty.logic.user.req.ReqUserRegister;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,8 @@ public enum PacketType {
      *心跳
      */
     heart(106, ReqHeart.class),
-    login(20013, ReqLogin.class)
+    login(20013, ReqLogin.class),
+    register(20015, ReqUserRegister.class)
     ;
     private int type;
     private Class<? extends AbstractPacket> packetClass;
