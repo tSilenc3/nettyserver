@@ -1,15 +1,24 @@
 package com.adward.netty.entity;
 
-public class User {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.io.Serializable;
 
+@Entity
+public class User implements Serializable {
+
+    @Id
+    @GeneratedValue
     private Long id;
 
+    @Column(nullable = false, unique = true)
     private String userName;
-
+    @Column(nullable = false)
     private String password;
 
     public User() {
-
     }
 
     public User(String userName, String password) {
