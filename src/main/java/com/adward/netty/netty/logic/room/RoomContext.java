@@ -24,7 +24,7 @@ public class RoomContext {
     private String roomId;
 
     public RoomContext(RoomUserVO owner, IoSession session) {
-        users = new HashMap<>();
+        users = new ConcurrentHashMap<>();
         roomId = getRoomId();
         roomMap.put(roomId, this);
         joinRoom(owner, session);
