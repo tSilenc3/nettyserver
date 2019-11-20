@@ -8,6 +8,11 @@ import com.adward.netty.netty.net.IoSession;
 import com.alibaba.fastjson.JSONObject;
 
 public class ReqLogin extends AbstractPacket {
+    /**
+     * param:
+     * String userName
+     * String password
+     */
 
     @Override
     public PacketType getPacketType() {

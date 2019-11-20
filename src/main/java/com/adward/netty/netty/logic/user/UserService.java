@@ -4,6 +4,7 @@ import com.adward.netty.entity.User;
 import com.adward.netty.netty.logic.Common.ResponseData;
 import com.adward.netty.netty.message.PacketType;
 import com.adward.netty.netty.net.IoSession;
+import com.adward.netty.netty.net.SessionCloseReason;
 import com.adward.netty.netty.utils.SessionUtil;
 import com.adward.netty.respository.UserRepository;
 import com.alibaba.fastjson.JSONObject;
@@ -62,5 +63,12 @@ public class UserService {
         userRepository.save(user);
 
         return user;
+    }
+
+    public void userLogout(Channel channel, SessionCloseReason closeReason) {
+        IoSession session = SessionUtil.getSessionByChannel(channel);
+
+        long userId = SessionUtil.getUserByChannel(channel).getId();
+
     }
 }

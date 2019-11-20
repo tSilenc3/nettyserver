@@ -1,5 +1,6 @@
 package com.adward.netty.base;
 
+import com.adward.netty.netty.logic.room.RoomService;
 import com.adward.netty.netty.logic.user.UserService;
 import javafx.application.Application;
 import org.springframework.beans.BeansException;
@@ -23,6 +24,7 @@ public class SpringContext implements ApplicationContextAware {
 
     private static UserService userService;
 
+    private static RoomService roomService;
 
 
     @Override
@@ -30,13 +32,19 @@ public class SpringContext implements ApplicationContextAware {
         SpringContext.applicationContext = applicationContext;
     }
 
-
     public static UserService getUserService() {
         return userService;
     }
-
     @Resource
     public void setUserService(UserService userService) {
         SpringContext.userService = userService;
+    }
+
+    public static RoomService getRoomService() {
+        return roomService;
+    }
+    @Resource
+    public void setRoomService(RoomService roomService) {
+        SpringContext.roomService = roomService;
     }
 }

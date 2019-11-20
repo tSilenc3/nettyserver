@@ -9,6 +9,12 @@ import com.adward.netty.netty.utils.SessionUtil;
 import com.alibaba.fastjson.JSONObject;
 
 public class ReqUserRegister extends AbstractPacket {
+    /**
+     * param:
+     * String userName
+     * String password
+     */
+
     @Override
     public PacketType getPacketType() {
         return PacketType.register;

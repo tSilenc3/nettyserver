@@ -1,6 +1,8 @@
 package com.adward.netty.netty.message;
 
 import com.adward.netty.netty.logic.ReqHeart;
+import com.adward.netty.netty.logic.room.req.ReqCreateRoom;
+import com.adward.netty.netty.logic.room.req.ReqJoinRoom;
 import com.adward.netty.netty.logic.user.req.ReqLogin;
 import com.adward.netty.netty.logic.user.req.ReqUserRegister;
 
@@ -12,8 +14,17 @@ public enum PacketType {
      *心跳
      */
     heart(106, ReqHeart.class),
+
+    /**
+     * 用户相关
+     */
     login(20013, ReqLogin.class),
-    register(20015, ReqUserRegister.class)
+    register(20015, ReqUserRegister.class),
+    /**
+     * 房间相关
+     */
+    createRoom(30001, ReqCreateRoom.class),
+    joinRoom(30002, ReqJoinRoom.class)
     ;
     private int type;
     private Class<? extends AbstractPacket> packetClass;
