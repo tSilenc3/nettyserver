@@ -1,5 +1,7 @@
 package com.adward.netty.netty.net;
 
+import com.adward.netty.base.SessionManager;
+import com.adward.netty.entity.User;
 import com.adward.netty.netty.utils.SessionUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -56,13 +58,19 @@ public class IoSession {
             if (this.channel == null) {
                 return;
             }
+            User user = SessionUtil.getUserByChannel(this.channel);
+
+            if (user != null) {
+                SessionManager.INSTANCE.unRegisterSession(SessionUtil.getUserByChannel(this.channel).getId());
+            }
 
             if (channel.isOpen()) {
                 channel.close();
-                logger.info("close session[{}], reason is {}", SessionUtil.getUserByChannel(this.channel).getId(), reason);
+                logger.info("close session, reason is {}", reason);
             } else  {
-                logger.info("session[{}] already close, reason is {}", SessionUtil.getUserByChannel(this.channel).getId(), reason);
+                logger.info("session already close, reason is {}", reason);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

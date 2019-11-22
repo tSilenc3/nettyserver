@@ -1,5 +1,6 @@
 package com.adward.netty.netty.logic.user;
 
+import com.adward.netty.base.SessionManager;
 import com.adward.netty.entity.User;
 import com.adward.netty.netty.logic.Common.ResponseData;
 import com.adward.netty.netty.message.PacketType;
@@ -37,6 +38,7 @@ public class UserService {
             jsonObject.put("name", user.getUserName());
             jsonObject.put("id", user.getId());
             ResponseData responseData = new ResponseData(PacketType.login.getType(), jsonObject);
+            SessionManager.INSTANCE.registerSession(user.getId(), session);
             session.sendPacket(responseData);
         }
     }

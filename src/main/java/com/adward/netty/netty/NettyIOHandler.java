@@ -52,7 +52,7 @@ public class NettyIOHandler extends SimpleChannelInboundHandler<TextWebSocketFra
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         logger.info("客户端断开连接了");
         ChannelPool.getInstance().remove(ctx.channel());
-
+        SessionUtil.getSessionByChannel(ctx.channel()).close(SessionCloseReason.NORMAL);
         super.channelInactive(ctx);
     }
 
