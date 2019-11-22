@@ -1,15 +1,18 @@
 package com.adward.netty.netty.logic.Common;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class ResponseData {
     private int cmd;
 
     private String err;
 
-    private Object data;
+    @JSONField(ordinal = 1)
+    private Object body;
 
-    public ResponseData(int cmd, Object data) {
+    public ResponseData(int cmd, Object body) {
         this.cmd = cmd;
-        this.data = data;
+        this.body = body;
     }
 
     public ResponseData(int cmd, String errMsg) {
@@ -25,12 +28,12 @@ public class ResponseData {
         this.cmd = cmd;
     }
 
-    public Object getData() {
-        return data;
+    public Object getBody() {
+        return body;
     }
 
-    public void setData(Object data) {
-        this.data = data;
+    public void setBody(Object body) {
+        this.body = body;
     }
 
     public String getErr() {

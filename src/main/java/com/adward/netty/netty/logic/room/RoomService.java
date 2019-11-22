@@ -45,4 +45,14 @@ public class RoomService {
             room.joinRoom(userVO, session);
         }
     }
+
+    public void quitRoom(IoSession session, String roomId) {
+        if (!RoomContext.roomMap.containsKey(roomId)) {
+            ResponseData responseData = new ResponseData(PacketType.quitRoom.getType(), "房间不存在");
+            session.sendPacket(responseData);
+        } else {
+            RoomContext roomContext = RoomContext.roomMap.get(roomId);
+            roomContext.outRoom(session, SessionUtil.getUserByChannel(session.getChannel()).getId());
+        }
+    }
 }

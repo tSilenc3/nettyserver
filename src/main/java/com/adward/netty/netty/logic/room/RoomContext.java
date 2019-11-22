@@ -51,18 +51,29 @@ public class RoomContext {
         }
     }
 
-    public void outRoom(RoomUserVO userVO) {
-        users.remove(userVO.getUserId());
-        userVO.setRoomId(null);
+    public void outRoom(IoSession session, long userId) {
+        RoomUserVO userVO = users.get(userId);
 
-        logger.info("用户 {} 退出了房间", userVO.getUserName());
+        if (userVO == null) {
+            logger.info("用户 {} 不在此房间", userId);
+            ResponseData responseData = new ResponseData(PacketType.quitRoom.getType(), "用户不在此房间");
+            session.sendPacket(responseData);
+            return;
+        }
+
+        users.remove(userId);
+        userVO.setRoomId(null);
+        logger.info("用户 {} 退出了房间", userId);
+
+        ResponseData responseData = new ResponseData(PacketType.quitRoom.getType(), null);
+        session.sendPacket(responseData);
         if (users.isEmpty()) {
             destroyRoom();
         }
 
     }
 
-    public void destroyRoom() {
+    private void destroyRoom() {
         roomMap.remove(roomId);
     }
 }
