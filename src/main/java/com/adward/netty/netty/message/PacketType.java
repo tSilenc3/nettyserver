@@ -4,6 +4,7 @@ import com.adward.netty.netty.logic.ReqHeart;
 import com.adward.netty.netty.logic.room.req.ReqCreateRoom;
 import com.adward.netty.netty.logic.room.req.ReqJoinRoom;
 import com.adward.netty.netty.logic.room.req.ReqQuitRoom;
+import com.adward.netty.netty.logic.room.req.ReqStartGame;
 import com.adward.netty.netty.logic.user.req.ReqLogin;
 import com.adward.netty.netty.logic.user.req.ReqUserRegister;
 
@@ -26,7 +27,8 @@ public enum PacketType {
      */
     createRoom(30001, ReqCreateRoom.class),
     joinRoom(30002, ReqJoinRoom.class),
-    quitRoom(30003,ReqQuitRoom.class)
+    quitRoom(30003,ReqQuitRoom.class),
+    startGame(30004, ReqStartGame.class)
     ;
     private int type;
     private Class<? extends AbstractPacket> packetClass;

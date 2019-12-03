@@ -70,7 +70,13 @@ public class RoomContext {
         if (users.isEmpty()) {
             destroyRoom();
         }
+    }
 
+    public void startGame(IoSession ioSession) {
+        if (this.users.size() < 3) {
+            logger.info("人数不足");
+            ResponseData responseData = new ResponseData(PacketType.startGame.getType(), "人数不足");
+        }
     }
 
     private void destroyRoom() {
