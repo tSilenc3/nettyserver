@@ -3,28 +3,32 @@ package com.adward.netty.netty.logic.Common;
 import com.alibaba.fastjson.annotation.JSONField;
 
 public class ResponseData {
-    private int cmd;
+    private String cmd;
 
     private String err;
 
     @JSONField(ordinal = 1)
     private Object body;
 
-    public ResponseData(int cmd, Object body) {
+    public ResponseData(String cmd) {
+        this.cmd = cmd;
+    }
+
+    public ResponseData(String cmd, Object body) {
         this.cmd = cmd;
         this.body = body;
     }
 
-    public ResponseData(int cmd, String errMsg) {
+    public ResponseData(String cmd, String errMsg) {
         this.cmd = cmd;
         this.err = errMsg;
     }
 
-    public int getCmd() {
+    public String getCmd() {
         return cmd;
     }
 
-    public void setCmd(int cmd) {
+    public void setCmd(String cmd) {
         this.cmd = cmd;
     }
 

@@ -38,7 +38,7 @@ public class NettyIOHandler extends SimpleChannelInboundHandler<TextWebSocketFra
         String message = textWebSocketFrame.text();
 
         JSONObject jsonObject = JSON.parseObject(message);
-        int cmd = jsonObject.getInteger("cmd");
+        String cmd = jsonObject.getString("cmd");
 
         AbstractPacket packet = PacketManager.INSTANCE.createNewPacket(cmd, jsonObject);
 

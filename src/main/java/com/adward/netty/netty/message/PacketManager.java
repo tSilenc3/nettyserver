@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 public enum  PacketManager {
         INSTANCE
     ;
-    public AbstractPacket createNewPacket(int port, JSONObject data) {
+    public AbstractPacket createNewPacket(String port, JSONObject data) {
         Class<? extends AbstractPacket> packetClass = PacketType.getPacketClassByPort(port);
 
         if (packetClass == null) {
